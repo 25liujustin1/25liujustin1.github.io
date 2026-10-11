@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body class="home">
+  {% if page.url != "/" %}
+  <header class="home-header">
+    <a class="brand" href="{{ '/' | relative_url }}">Justin Ren Liu</a>
+    <nav>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      {% for item in site.data.nav %}<a href="{% include nav-href.html url=item.url %}">{{ item.name }}</a>{% endfor %}
+    </nav>
+  </header>
+  {% endif %}
+  <main class="home-main">
+    {{ content }}
+  </main>
+</body>
+</html>

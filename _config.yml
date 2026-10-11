@@ -9,6 +9,14 @@ email: liujustin1@g.ucla.edu
 github: 25liujustin1
 location: Los Angeles, CA
 
+# Board renders shown on the site. Each is a file in _includes/boards/.
+# Swap the hand-drawn decoder for the KiCad render once it exists
+# (python tools/kicad_to_svg.py ... _includes/boards/decoder.svg).
+boards:
+  home: decoder-hand.svg
+  card:            # e.g. card.svg, rendered from the business card's KiCad file
+show_card_link: true   # small "got my card?" link on the home page
+
 url: https://25liujustin1.github.io
 baseurl: ""
 
@@ -38,3 +46,4 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - tools

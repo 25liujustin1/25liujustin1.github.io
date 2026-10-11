@@ -1,0 +1,31 @@
+---
+layout: home
+title: Business Card
+description: The NFC business card that links to this site.
+---
+<section class="card-page">
+  <p class="eyebrow">{{ site.part_number }} · BUSINESS CARD</p>
+  <h1 id="card-title">This is my business card.</h1>
+  <p class="lead" id="card-lead">It's a circuit board with an NFC tag: tap it with a phone and it opens this site. Below is the card's actual board, rendered from its KiCad design.</p>
+
+  <div class="card-stage">
+    {% if site.boards.card %}
+      {% include boards/{{ site.boards.card }} %}
+    {% else %}
+      <p>Card PCB render goes here.<br>Set <code>boards.card</code> in <code>_config.yml</code> once the KiCad design exists.</p>
+    {% endif %}
+  </div>
+
+  <p class="card-next">
+    Keep exploring: <a href="{{ '/' | relative_url }}">Home</a> ·
+    {% for item in site.data.nav %}<a href="{% include nav-href.html url=item.url %}">{{ item.name }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}
+  </p>
+</section>
+
+<script>
+  // The NFC tag opens /card/?tap=1, so people who tapped the card get a different greeting.
+  if (new URLSearchParams(location.search).has('tap')) {
+    document.getElementById('card-title').textContent = 'You just tapped my card.';
+    document.getElementById('card-lead').textContent = "Here's what's inside it: the actual circuit board, rendered from its KiCad design.";
+  }
+</script>

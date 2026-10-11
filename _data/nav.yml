@@ -1,0 +1,14 @@
+# The four destinations, in decoder address order (A1 A0).
+# This list drives the home page nav buttons, the board's LED rows and the truth table.
+- name: Datasheet
+  url: /about/
+  addr: "00"
+- name: Projects
+  url: /projects/
+  addr: "01"
+- name: Blog
+  url: /blog/
+  addr: "10"
+- name: Contact
+  url: mailto:liujustin1@g.ucla.edu
+  addr: "11"

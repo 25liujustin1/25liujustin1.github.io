@@ -1,0 +1,144 @@
+<!--
+  Hand-drawn 74HC139 2-to-4 decoder board (placeholder until the KiCad version exists).
+
+  Hooks used by assets/js/decoder.js. A KiCad render must provide the same ones:
+    #sw-a1, #sw-a0        address switches (class "sw", contain a ".knob")
+    #n-a1, #n-a0          address nets      (glow when HIGH)
+    #n-y0 .. #n-y3        active-low outputs (selected one lights green)
+    #n-k0 .. #n-k3        resistor-to-LED nets for each row
+    a.out[data-addr=N]    clickable LED rows, containing ".die" and ".glow"
+-->
+<svg class="pcb" id="pcb" viewBox="0 0 820 460" role="img" aria-label="74HC139 2-to-4 decoder board used as site navigation">
+  <defs>
+    <radialGradient id="led-glow">
+      <stop offset="0" stop-color="#7dffa6" stop-opacity="0.9"/>
+      <stop offset="0.35" stop-color="#3dff7a" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#3dff7a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect class="board" x="20" y="20" width="780" height="420" rx="18"/>
+  <rect class="pour" x="34" y="34" width="752" height="392" rx="10"/>
+
+  <!-- clearances: the GND pour pulls back from every non-GND trace and pad -->
+  <g class="clear" stroke-width="17">
+    <path d="M707 139 H583 M620 139 V66 H86 V365 M600 165 V139 M583 165 H600 M620 100 H623 M300 66 V71 M340 66 V71"/>
+    <path d="M86 217 H107 M86 265 H107 M86 315 H107 M86 365 H107"/>
+  </g>
+  <g class="clear" stroke-width="15">
+    <path d="M340 142 V150 L355 165 H457 M340 152 H362"/>
+    <path d="M300 142 V191 H457 M300 170 H287"/>
+    <path d="M457 217 H239"/>
+    <path d="M457 243 H400 L378 265 H239"/>
+    <path d="M457 269 H420 L374 315 H239"/>
+    <path d="M457 295 H440 L370 365 H239"/>
+    <path d="M187 217 H159 M187 265 H159 M187 315 H159 M187 365 H159"/>
+  </g>
+  <g class="clear-pad">
+    <rect x="700" y="126" width="40" height="26" rx="3"/>
+    <rect x="452" y="155" width="36" height="20"/><rect x="452" y="181" width="36" height="20"/>
+    <rect x="452" y="207" width="36" height="20"/><rect x="452" y="233" width="36" height="20"/><rect x="452" y="259" width="36" height="20"/><rect x="452" y="285" width="36" height="20"/>
+    <rect x="552" y="129" width="36" height="20"/><rect x="552" y="155" width="36" height="20"/>
+    <rect x="552" y="233" width="36" height="20"/><rect x="552" y="259" width="36" height="20"/><rect x="552" y="285" width="36" height="20"/><rect x="552" y="311" width="36" height="20"/>
+    <rect x="619" y="88" width="26" height="24"/>
+    <rect x="286" y="64" width="28" height="24"/><rect x="326" y="64" width="28" height="24"/>
+    <rect x="286" y="130" width="28" height="24"/><rect x="326" y="130" width="28" height="24"/>
+    <rect x="358" y="140" width="26" height="24"/><rect x="265" y="158" width="26" height="24"/>
+    <rect x="102" y="205" width="26" height="24"/><rect x="102" y="253" width="26" height="24"/><rect x="102" y="303" width="26" height="24"/><rect x="102" y="353" width="26" height="24"/>
+    <rect x="136" y="205" width="26" height="24"/><rect x="136" y="253" width="26" height="24"/><rect x="136" y="303" width="26" height="24"/><rect x="136" y="353" width="26" height="24"/>
+    <rect x="182" y="205" width="26" height="24"/><rect x="182" y="253" width="26" height="24"/><rect x="182" y="303" width="26" height="24"/><rect x="182" y="353" width="26" height="24"/>
+    <rect x="218" y="205" width="26" height="24"/><rect x="218" y="253" width="26" height="24"/><rect x="218" y="303" width="26" height="24"/><rect x="218" y="353" width="26" height="24"/>
+  </g>
+
+  <!-- copper -->
+  <path class="cu vcc" id="n-vcc" stroke-width="7" d="M707 139 H583 M620 139 V66 H86 V365 M600 165 V139 M583 165 H600 M620 100 H623 M300 66 V71 M340 66 V71 M86 217 H107 M86 265 H107 M86 315 H107 M86 365 H107"/>
+  <path class="cu addr" id="n-a0" stroke-width="5" d="M340 142 V150 L355 165 H457 M340 152 H362"/>
+  <path class="cu addr" id="n-a1" stroke-width="5" d="M300 142 V191 H457 M300 170 H287"/>
+  <path class="cu" id="n-y0" stroke-width="5" d="M457 217 H239"/>
+  <path class="cu" id="n-y1" stroke-width="5" d="M457 243 H400 L378 265 H239"/>
+  <path class="cu" id="n-y2" stroke-width="5" d="M457 269 H420 L374 315 H239"/>
+  <path class="cu" id="n-y3" stroke-width="5" d="M457 295 H440 L370 365 H239"/>
+  <path class="cu" id="n-k0" stroke-width="5" d="M187 217 H159"/>
+  <path class="cu" id="n-k1" stroke-width="5" d="M187 265 H159"/>
+  <path class="cu" id="n-k2" stroke-width="5" d="M187 315 H159"/>
+  <path class="cu" id="n-k3" stroke-width="5" d="M187 365 H159"/>
+
+  <!-- GND stitching vias and mounting holes -->
+  <g>
+    {% assign vias = "350,412 398,412 446,412 494,412 542,412 590,412 686,46 734,46 680,260 680,320 640,360 500,380 420,380 740,260 740,330" | split: " " %}
+    {% for v in vias %}{% assign p = v | split: "," %}<circle class="via-ring" cx="{{ p[0] }}" cy="{{ p[1] }}" r="5"/><circle class="hole" cx="{{ p[0] }}" cy="{{ p[1] }}" r="2"/>{% endfor %}
+    <circle class="via-ring" cx="52" cy="52" r="13"/><circle class="hole" cx="52" cy="52" r="8"/>
+    <circle class="via-ring" cx="768" cy="52" r="13"/><circle class="hole" cx="768" cy="52" r="8"/>
+    <circle class="via-ring" cx="52" cy="408" r="13"/><circle class="hole" cx="52" cy="408" r="8"/>
+    <circle class="via-ring" cx="768" cy="408" r="13"/><circle class="hole" cx="768" cy="408" r="8"/>
+  </g>
+
+  <!-- U1: 74HC139, SOIC-16. Left: ~1E 1A0 1A1 ~1Y0..~1Y3 GND. Right (top→bottom): VCC ~2E 2A0 2A1 ~2Y0..~2Y3 -->
+  <g>
+    {% assign pins = "133 159 185 211 237 263 289 315" | split: " " %}
+    {% for y in pins %}<rect class="pad" x="457" y="{{ y }}" width="26" height="12"/><rect class="pad" x="557" y="{{ y }}" width="26" height="12"/>{% endfor %}
+    <rect class="silk" x="489" y="125" width="62" height="210" rx="2"/>
+    <circle class="silk-fill" cx="499" cy="137" r="3.5"/>
+    <text class="silk-t" x="520" y="236" text-anchor="middle" transform="rotate(-90 520 232)">74HC139</text>
+    <text class="silk-t" x="489" y="117">U1</text>
+    <text class="silk-v" x="452" y="129" text-anchor="end">~1E</text>
+    <text class="silk-v" x="592" y="129">VCC</text>
+    <text class="silk-v" x="592" y="198">2A0</text><text class="silk-v" x="592" y="224">2A1</text>
+    <text class="silk-v" x="592" y="250">NC</text><text class="silk-v" x="592" y="276">NC</text><text class="silk-v" x="592" y="302">NC</text><text class="silk-v" x="592" y="328">NC</text>
+  </g>
+
+  <!-- C1 decoupling -->
+  <rect class="pad" x="623" y="93" width="16" height="14"/><rect class="pad" x="651" y="93" width="16" height="14"/>
+  <text class="silk-t" x="627" y="86" font-size="11">C1</text><text class="silk-v" x="628" y="124">100n</text>
+
+  <!-- J1 power -->
+  <rect class="pad" x="707" y="126" width="26" height="26" rx="2"/><circle class="hole" cx="720" cy="139" r="6"/>
+  <circle class="pad" cx="720" cy="184" r="13"/><circle class="hole" cx="720" cy="184" r="6"/>
+  <rect class="silk" x="697" y="115" width="46" height="92" rx="3"/>
+  <text class="silk-t" x="697" y="107">J1</text>
+  <text class="silk-v" x="750" y="143">+5V</text><text class="silk-v" x="750" y="188">GND</text>
+
+  <!-- SW1: 2-position DIP switch, common to VCC; A1 left, A0 right -->
+  <rect class="pad" x="291" y="69" width="18" height="14"/><rect class="pad" x="331" y="69" width="18" height="14"/>
+  <rect class="pad" x="291" y="135" width="18" height="14"/><rect class="pad" x="331" y="135" width="18" height="14"/>
+  <rect class="silk" x="280" y="88" width="80" height="42" rx="2"/>
+  <text class="silk-t" x="280" y="62">SW1</text>
+  <text class="silk-v" x="366" y="100">ON</text>
+  <text class="silk-v" x="274" y="113" text-anchor="end">A1</text>
+  <text class="silk-v" x="366" y="125">A0</text>
+  <g class="sw" id="sw-a1" tabindex="0" role="switch" aria-checked="false" aria-label="Address bit A1">
+    <rect class="slot" x="292" y="91" width="16" height="36" rx="2"/>
+    <rect class="knob" x="294" y="111" width="12" height="14" rx="1.5"/>
+  </g>
+  <g class="sw" id="sw-a0" tabindex="0" role="switch" aria-checked="false" aria-label="Address bit A0">
+    <rect class="slot" x="332" y="91" width="16" height="36" rx="2"/>
+    <rect class="knob" x="334" y="111" width="12" height="14" rx="1.5"/>
+  </g>
+
+  <!-- pull-downs R1 (A1) and R2 (A0) -->
+  <rect class="pad" x="362" y="145" width="16" height="14"/><rect class="pad" x="390" y="145" width="16" height="14"/>
+  <text class="silk-t" x="375" y="139" font-size="11">R2</text><text class="silk-v" x="410" y="156">10k</text>
+  <rect class="pad" x="271" y="163" width="16" height="14"/><rect class="pad" x="243" y="163" width="16" height="14"/>
+  <text class="silk-t" x="246" y="157" font-size="11">R1</text><text class="silk-v" x="236" y="175" text-anchor="end">10k</text>
+
+  <!-- outputs: one row per page (resistor → LED anode, LED cathode → ~Yn) -->
+  {% assign rows = "217 265 315 365" | split: " " %}
+  {% for item in site.data.nav %}{% assign y = rows[forloop.index0] | plus: 0 %}{% assign n = forloop.index0 %}
+  <a class="out" href="{% include nav-href.html url=item.url %}" data-addr="{{ n }}" data-name="{{ item.name }}" aria-label="{{ item.name }} (address {{ item.addr }})">
+    <rect class="ring" x="98" y="{{ y | minus: 36 }}" width="158" height="52" rx="6"/>
+    <circle class="glow" cx="213" cy="{{ y }}" r="46" fill="url(#led-glow)"/>
+    <rect class="pad" x="107" y="{{ y | minus: 7 }}" width="16" height="14"/>
+    <rect class="pad" x="141" y="{{ y | minus: 7 }}" width="16" height="14"/>
+    <path class="silk" stroke-width="1.6" d="M127 {{ y | minus: 11 }} H137 M127 {{ y | plus: 11 }} H137"/>
+    <rect class="pad" x="187" y="{{ y | minus: 7 }}" width="16" height="14"/>
+    <rect class="pad" x="223" y="{{ y | minus: 7 }}" width="16" height="14"/>
+    <rect class="die" x="206" y="{{ y | minus: 5 }}" width="14" height="10" rx="2"/>
+    <path class="silk" stroke-width="1.6" d="M180 {{ y | minus: 13 }} H246 V{{ y | plus: 13 }} H180 Z M240 {{ y | minus: 13 }} V{{ y | plus: 13 }}"/>
+    <text class="label" x="104" y="{{ y | minus: 20 }}">{{ item.name | upcase }}</text>
+    <text class="addr" x="246" y="{{ y | minus: 20 }}" text-anchor="end">D{{ n | plus: 1 }} · Y{{ n }}</text>
+  </a>
+  {% endfor %}
+
+  <text class="silk-big" x="82" y="400">2-TO-4 DECODER · REV A</text>
+  <text class="silk-big" x="740" y="400" text-anchor="end">{{ site.part_number }} · 2026</text>
+</svg>

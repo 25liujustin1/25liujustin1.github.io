@@ -1,69 +1,44 @@
 ---
-layout: default
+layout: home
 ---
-<section class="hero">
-  <p class="eyebrow mono">{{ site.part_number }} · UCLA EE '29</p>
-  <h1>Justin Ren Liu</h1>
-  <p class="lead">Electrical Engineering student at UCLA. I design PCBs, power systems and bare-metal firmware for rockets, underwater robots and lab hardware.</p>
-  <div class="actions">
-    <a class="btn primary" href="{{ '/about/' | relative_url }}">View my datasheet →</a>
-    <a class="btn" href="{{ '/projects/' | relative_url }}">Projects</a>
-    <a class="btn" href="mailto:{{ site.email }}">Email me</a>
-  </div>
-</section>
+<div class="home-grid">
+  <section class="intro">
+    <p class="eyebrow">{{ site.part_number }} · UCLA ELECTRICAL ENGINEERING '29</p>
+    <h1>Justin Ren Liu</h1>
+    <p class="lead">I design PCBs, power systems and bare-metal firmware for rockets, underwater robots and lab hardware.</p>
+    <nav class="decoder-nav" aria-label="Site">
+      {% for item in site.data.nav %}
+      <a href="{% include nav-href.html url=item.url %}" data-addr="{{ forloop.index0 }}" data-name="{{ item.name }}">{{ item.name }} <code>{{ item.addr }}</code></a>
+      {% endfor %}
+    </nav>
+    <p class="small-links">
+      <a href="https://github.com/{{ site.github }}">GitHub</a>
+      {% if site.show_card_link %} · <a href="{{ '/card/' | relative_url }}">Got my business card? See it here →</a>{% endif %}
+    </p>
+  </section>
 
-<section class="block">
-  <div class="block-head">
-    <h2>Research</h2>
-  </div>
-  <ul class="rows">
-    <li>
-      <span class="when mono">Aug 2026 – now</span>
-      <div><strong>Di Carlo Lab</strong>, California NanoSystems Institute<br>
-      <span class="muted">ESP32 PI temperature control for a Peltier cold plate in an autonomous bioassay platform.</span></div>
-    </li>
-    <li>
-      <span class="when mono">Jun 2026 – now</span>
-      <div><strong>Mechatronics and Controls Lab</strong>, UCLA MAE<br>
-      <span class="muted">Main PCB and pressure sensor board for a 6-DOF autonomous underwater vehicle.</span></div>
-    </li>
-  </ul>
-</section>
+  <section class="bench">
+    {% include boards/{{ site.boards.home }} %}
 
-<section class="block">
-  <div class="block-head">
-    <h2>Projects</h2>
-    <a href="{{ '/projects/' | relative_url }}">All projects →</a>
-  </div>
-  <div class="cards">
-    {% assign projects = site.projects | sort: "order" %}
-    {% for p in projects limit: 4 %}
-    <a class="card" href="{{ p.url | relative_url }}">
-      <span class="when mono">{{ p.period }}</span>
-      <h3>{{ p.title }}</h3>
-      <p>{{ p.summary }}</p>
-      <span class="tags">{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</span>
-    </a>
-    {% endfor %}
-  </div>
-</section>
+    <div class="status">
+      <span class="logic" id="logic"></span>
+      <a class="go" id="go" href="{{ '/about/' | relative_url }}">Go →</a>
+    </div>
+    <div class="status top">
+      <table class="truth">
+        <tr><th>A1</th><th>A0</th><th class="ol">Y0</th><th class="ol">Y1</th><th class="ol">Y2</th><th class="ol">Y3</th><th>Page</th></tr>
+        {% for item in site.data.nav %}
+        {% assign n = forloop.index0 %}
+        <tr data-addr="{{ n }}">
+          <td>{{ item.addr | slice: 0 }}</td><td>{{ item.addr | slice: 1 }}</td>
+          {% for k in (0..3) %}<td>{% if k == n %}L{% else %}H{% endif %}</td>{% endfor %}
+          <td>{{ item.name }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <p class="hint">Flip SW1, hover a page,<br>or click a lit LED.<br>Outputs are active-low.</p>
+    </div>
+  </section>
+</div>
 
-<section class="block">
-  <div class="block-head">
-    <h2>Latest posts</h2>
-    <a href="{{ '/blog/' | relative_url }}">All posts →</a>
-  </div>
-  {% if site.posts.size > 0 %}
-  <ul class="rows">
-    {% for post in site.posts limit: 3 %}
-    <li>
-      <span class="when mono">{{ post.date | date: "%b %-d, %Y" }}</span>
-      <div><a href="{{ post.url | relative_url }}"><strong>{{ post.title }}</strong></a>
-      {% if post.summary %}<br><span class="muted">{{ post.summary }}</span>{% endif %}</div>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p class="muted">No posts yet.</p>
-  {% endif %}
-</section>
+<script src="{{ '/assets/js/decoder.js' | relative_url }}" defer></script>
