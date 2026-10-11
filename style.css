@@ -85,6 +85,13 @@ h3 { font-size: 1.1rem; margin: 0 0 6px; }
   color: var(--muted);
 }
 
+.subhead { font-size: 0.95rem; color: var(--muted); margin: 24px 0 0; font-weight: 600; }
+
+.points { margin: 6px 0 0; padding-left: 18px; color: var(--muted); }
+.points li { margin-bottom: 6px; }
+
+.card .date { font-size: 0.8rem; margin: 0 0 6px; color: var(--accent); font-weight: 500; }
+
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
 .card {
   background: var(--surface);
