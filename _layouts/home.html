@@ -16,7 +16,7 @@
     <a class="brand" href="{{ '/' | relative_url }}">Justin Ren Liu</a>
     <nav>
       <a href="{{ '/' | relative_url }}">Home</a>
-      {% for item in site.data.nav %}<a href="{% include nav-href.html url=item.url %}">{{ item.name }}</a>{% endfor %}
+      {% unless page.home_only %}{% for item in site.data.nav %}<a href="{% include nav-href.html url=item.url %}">{{ item.name }}</a>{% endfor %}{% endunless %}
     </nav>
   </header>
   {% endif %}
