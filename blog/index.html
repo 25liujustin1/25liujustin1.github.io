@@ -1,21 +1,21 @@
 ---
 layout: page
-title: Technical Notes
-kind: Blog
+title: Blog
+lead: Build logs, debugging stories and things I learned along the way.
 ---
-<p>Build logs, debugging stories and things I learned along the way. <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a></p>
-
 {% if site.posts.size > 0 %}
-<ol class="postlist">
+<ul class="rows">
   {% for post in site.posts %}
   <li>
-    <p class="post-meta"><span class="num">TN-{{ post.date | date: "%y%m%d" }}</span> · {{ post.date | date: "%B %-d, %Y" }}</p>
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 220 }}</p>
-    {% if post.tags.size > 0 %}<p>{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>{% endif %}
+    <span class="when mono">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <div>
+      <a href="{{ post.url | relative_url }}"><strong>{{ post.title }}</strong></a><br>
+      <span class="muted">{{ post.summary | default: post.excerpt | strip_html | truncate: 200 }}</span>
+      {% if post.tags.size > 0 %}<span class="tags">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</span>{% endif %}
+    </div>
   </li>
   {% endfor %}
-</ol>
+</ul>
 {% else %}
-<p>No technical notes yet.</p>
+<p class="muted">No posts yet.</p>
 {% endif %}

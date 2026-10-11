@@ -1,77 +1,69 @@
 ---
 layout: default
 ---
-<p class="partno">{{ site.part_number }}</p>
-<p class="subtitle">{{ site.tagline }}</p>
-
-<div class="front">
-  <div>
-    <h2 class="sec"><span class="n">1</span>Features</h2>
-    <ul>
-      <li>2- and 4-layer PCB design in KiCad and Autodesk</li>
-      <li>Power regulation: cascaded buck-LDO, ideal-diode ORing, reverse-polarity and ESD protection</li>
-      <li>Bare-metal STM32 firmware (GPIO, UART, timers, DMA)</li>
-      <li>ESP32 control loops and wireless (LoRa, ESP-NOW)</li>
-      <li>Board bring-up, soldering and rework</li>
-      <li>Languages: C/C++, Python, Verilog</li>
-    </ul>
-
-    <h2 class="sec"><span class="n">2</span>Applications</h2>
-    <ul>
-      <li>Rocket avionics</li>
-      <li>Autonomous underwater vehicles</li>
-      <li>Lab automation and bioassay hardware</li>
-      <li>Wearables and hackathon prototypes</li>
-    </ul>
+<section class="hero">
+  <p class="eyebrow mono">{{ site.part_number }} · UCLA EE '29</p>
+  <h1>Justin Ren Liu</h1>
+  <p class="lead">Electrical Engineering student at UCLA. I design PCBs, power systems and bare-metal firmware for rockets, underwater robots and lab hardware.</p>
+  <div class="actions">
+    <a class="btn primary" href="{{ '/about/' | relative_url }}">View my datasheet →</a>
+    <a class="btn" href="{{ '/projects/' | relative_url }}">Projects</a>
+    <a class="btn" href="mailto:{{ site.email }}">Email me</a>
   </div>
-  <div>
-    <h2 class="sec"><span class="n">3</span>Description</h2>
-    <p>The {{ site.part_number }} is a UCLA Electrical Engineering student (B.S. expected June 2029) doing hardware research at the California NanoSystems Institute and the Mechatronics and Controls Lab. The device has been validated in flight on a hybrid rocket reaching ~13,400&nbsp;ft and in multiple 24–36 hour hackathons.</p>
+</section>
 
-    <div class="tablewrap">
-      <table>
-        <caption>Device Information</caption>
-        <tr><th>Part number</th><th>Package</th><th>Location</th></tr>
-        <tr><td>{{ site.part_number }}</td><td>UCLA B.S. EE</td><td>{{ site.location }}</td></tr>
-      </table>
-    </div>
-    <p class="more"><a href="{{ '/about/' | relative_url }}">Full specifications →</a></p>
+<section class="block">
+  <div class="block-head">
+    <h2>Research</h2>
   </div>
-</div>
+  <ul class="rows">
+    <li>
+      <span class="when mono">Aug 2026 – now</span>
+      <div><strong>Di Carlo Lab</strong>, California NanoSystems Institute<br>
+      <span class="muted">ESP32 PI temperature control for a Peltier cold plate in an autonomous bioassay platform.</span></div>
+    </li>
+    <li>
+      <span class="when mono">Jun 2026 – now</span>
+      <div><strong>Mechatronics and Controls Lab</strong>, UCLA MAE<br>
+      <span class="muted">Main PCB and pressure sensor board for a 6-DOF autonomous underwater vehicle.</span></div>
+    </li>
+  </ul>
+</section>
 
-<h2 class="sec"><span class="n">4</span>Application Notes: Projects</h2>
-<div class="tablewrap">
-  <table>
-    <tr><th>Doc</th><th>Title</th><th>Date</th></tr>
+<section class="block">
+  <div class="block-head">
+    <h2>Projects</h2>
+    <a href="{{ '/projects/' | relative_url }}">All projects →</a>
+  </div>
+  <div class="cards">
     {% assign projects = site.projects | sort: "order" %}
-    {% for p in projects %}
-    <tr>
-      <td class="num">{{ p.doc }}</td>
-      <td><a href="{{ p.url | relative_url }}">{{ p.title }}</a><span class="row-sum">{{ p.summary }}</span></td>
-      <td class="nowrap">{{ p.period }}</td>
-    </tr>
+    {% for p in projects limit: 4 %}
+    <a class="card" href="{{ p.url | relative_url }}">
+      <span class="when mono">{{ p.period }}</span>
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.summary }}</p>
+      <span class="tags">{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</span>
+    </a>
     {% endfor %}
-  </table>
-</div>
+  </div>
+</section>
 
-<h2 class="sec"><span class="n">5</span>Latest Technical Notes: Blog</h2>
-{% if site.posts.size > 0 %}
-<div class="tablewrap">
-  <table>
-    <tr><th>Doc</th><th>Title</th><th>Date</th></tr>
+<section class="block">
+  <div class="block-head">
+    <h2>Latest posts</h2>
+    <a href="{{ '/blog/' | relative_url }}">All posts →</a>
+  </div>
+  {% if site.posts.size > 0 %}
+  <ul class="rows">
     {% for post in site.posts limit: 3 %}
-    <tr>
-      <td class="num">TN-{{ post.date | date: "%y%m%d" }}</td>
-      <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
-      <td class="nowrap">{{ post.date | date: "%b %-d, %Y" }}</td>
-    </tr>
+    <li>
+      <span class="when mono">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <div><a href="{{ post.url | relative_url }}"><strong>{{ post.title }}</strong></a>
+      {% if post.summary %}<br><span class="muted">{{ post.summary }}</span>{% endif %}</div>
+    </li>
     {% endfor %}
-  </table>
-</div>
-<p class="more"><a href="{{ '/blog/' | relative_url }}">All technical notes →</a></p>
-{% else %}
-<p>No technical notes yet.</p>
-{% endif %}
-
-<h2 class="sec"><span class="n">6</span>Pin Configuration and Functions</h2>
-{% include pinout.html %}
+  </ul>
+  {% else %}
+  <p class="muted">No posts yet.</p>
+  {% endif %}
+</section>

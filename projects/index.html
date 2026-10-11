@@ -1,21 +1,16 @@
 ---
 layout: page
-title: Application Notes
-kind: Projects
+title: Projects
+lead: Boards, firmware and hardware I've built, newest first.
 ---
-<p>Each application note covers one project: what it does, my role, and the design decisions behind it.</p>
-
-<div class="tablewrap">
-  <table>
-    <tr><th>Doc</th><th>Title</th><th>Date</th><th>Tags</th></tr>
-    {% assign projects = site.projects | sort: "order" %}
-    {% for p in projects %}
-    <tr>
-      <td class="num">{{ p.doc }}</td>
-      <td><a href="{{ p.url | relative_url }}">{{ p.title }}</a><span class="row-sum">{{ p.summary }}</span></td>
-      <td class="nowrap">{{ p.period }}</td>
-      <td>{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</td>
-    </tr>
-    {% endfor %}
-  </table>
+<div class="cards">
+  {% assign projects = site.projects | sort: "order" %}
+  {% for p in projects %}
+  <a class="card" href="{{ p.url | relative_url }}">
+    <span class="when mono">{{ p.period }}</span>
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.summary }}</p>
+    <span class="tags">{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</span>
+  </a>
+  {% endfor %}
 </div>

@@ -1,0 +1,20 @@
+---
+layout: default
+body_class: on-desk
+---
+<article class="ds">
+  <div class="ds-topbar">
+    <span class="ds-logo">JUSTIN REN LIU <span>■</span></span>
+    <span class="ds-docid">{{ site.part_number }} · SLUS-UCLA · REVISED {{ site.time | date: "%B %Y" | upcase }}</span>
+  </div>
+  <p class="ds-partno">{{ site.part_number }}</p>
+  <p class="ds-subtitle">{{ site.tagline }}</p>
+  <div class="ds-body">
+    {{ content }}
+  </div>
+  <div class="ds-foot">
+    <a href="mailto:{{ site.email }}?subject=Documentation%20Feedback">Submit Documentation Feedback</a>
+    <span>Copyright © {{ site.time | date: "%Y" }}, {{ site.author }}</span>
+    <span>Product Folder Links: <a href="https://github.com/{{ site.github }}">{{ site.part_number }}</a></span>
+  </div>
+</article>

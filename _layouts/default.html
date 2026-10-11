@@ -10,33 +10,34 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   {% feed_meta %}
 </head>
-<body>
-  <div class="page">
-    <header class="topbar">
-      <a class="logo" href="{{ '/' | relative_url }}">JUSTIN REN LIU <span>■</span></a>
-      <span class="docid">{{ site.part_number }} · {{ page.doc | default: "SLUS-UCLA" }} · REVISED {{ site.time | date: "%B %Y" | upcase }}</span>
-    </header>
+<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="{{ '/' | relative_url }}">Justin Ren Liu</a>
+      <nav>
+        {% assign nav = "Projects|/projects/,Blog|/blog/,About|/about/" | split: "," %}
+        {% for item in nav %}
+          {% assign parts = item | split: "|" %}
+          <a href="{{ parts[1] | relative_url }}"{% if page.url contains parts[1] %} aria-current="page"{% endif %}>{{ parts[0] }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+  </header>
 
-    <nav class="tabs">
-      {% assign nav = "Home|/,Projects|/projects/,Blog|/blog/,About|/about/" | split: "," %}
-      {% for item in nav %}
-        {% assign parts = item | split: "|" %}
-        {% assign current = false %}
-        {% if page.url == parts[1] %}{% assign current = true %}{% endif %}
-        {% if parts[1] != "/" %}{% if page.url contains parts[1] %}{% assign current = true %}{% endif %}{% endif %}
-        <a href="{{ parts[1] | relative_url }}"{% if current %} aria-current="page"{% endif %}>{{ parts[0] }}</a>
-      {% endfor %}
-    </nav>
+  <main class="wrap">
+    {{ content }}
+  </main>
 
-    <main>
-      {{ content }}
-    </main>
-
-    <footer class="pagefoot">
-      <a href="mailto:{{ site.email }}?subject=Documentation%20Feedback">Submit Documentation Feedback</a>
-      <span>Copyright © {{ site.time | date: "%Y" }}, {{ site.author }}</span>
-      <span>Product Folder Links: <a href="https://github.com/{{ site.github }}">{{ site.part_number }}</a></span>
-    </footer>
-  </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© {{ site.time | date: "%Y" }} {{ site.author }}</span>
+      <span>
+        <a href="mailto:{{ site.email }}">Email</a> ·
+        <a href="https://github.com/{{ site.github }}">GitHub</a> ·
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </span>
+      <span class="mono">{{ site.part_number }}</span>
+    </div>
+  </footer>
 </body>
 </html>
