@@ -1,153 +1,77 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Justin Ren Liu</title>
-  <meta name="description" content="Justin Ren Liu: UCLA Electrical Engineering student working on PCB design, power systems and embedded firmware.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="nav">
-    <a class="brand" href="#top">JL</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+---
+layout: default
+---
+<p class="partno">{{ site.part_number }}</p>
+<p class="subtitle">{{ site.tagline }}</p>
 
-  <main id="top">
-    <section class="hero">
-      <p class="eyebrow">Hi, I'm</p>
-      <h1>Justin Ren Liu</h1>
-      <p class="lead">Electrical Engineering student at UCLA. I design PCBs, power systems and bare-metal firmware for rockets, underwater robots and lab hardware.</p>
-      <div class="actions">
-        <a class="btn primary" href="#projects">See my work</a>
-        <a class="btn" href="https://github.com/25liujustin1" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </section>
+<div class="front">
+  <div>
+    <h2 class="sec"><span class="n">1</span>Features</h2>
+    <ul>
+      <li>2- and 4-layer PCB design in KiCad and Autodesk</li>
+      <li>Power regulation: cascaded buck-LDO, ideal-diode ORing, reverse-polarity and ESD protection</li>
+      <li>Bare-metal STM32 firmware (GPIO, UART, timers, DMA)</li>
+      <li>ESP32 control loops and wireless (LoRa, ESP-NOW)</li>
+      <li>Board bring-up, soldering and rework</li>
+      <li>Languages: C/C++, Python, Verilog</li>
+    </ul>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>I'm studying for a B.S. in Electrical Engineering at UCLA (expected June 2029). I do hardware research in two UCLA labs, and I've worked on avionics for the UCLA Rocket Project. Relevant coursework: Signals and Systems, Computer Organization, Logic Design of Digital Systems.</p>
-      <h3 class="subhead">Technical skills</h3>
-      <ul class="tags">
-        <li>Multi-layer PCB design</li>
-        <li>Power systems</li>
-        <li>Bare-metal firmware</li>
-        <li>Hardware integration</li>
-        <li>Soldering</li>
-      </ul>
-      <h3 class="subhead">Tools &amp; languages</h3>
-      <ul class="tags">
-        <li>C/C++</li>
-        <li>Python</li>
-        <li>Verilog</li>
-        <li>KiCad</li>
-        <li>Autodesk (PCB/CAD)</li>
-        <li>SolidWorks</li>
-        <li>LTspice</li>
-        <li>Oscilloscope</li>
-        <li>Git</li>
-      </ul>
-    </section>
+    <h2 class="sec"><span class="n">2</span>Applications</h2>
+    <ul>
+      <li>Rocket avionics</li>
+      <li>Autonomous underwater vehicles</li>
+      <li>Lab automation and bioassay hardware</li>
+      <li>Wearables and hackathon prototypes</li>
+    </ul>
+  </div>
+  <div>
+    <h2 class="sec"><span class="n">3</span>Description</h2>
+    <p>The {{ site.part_number }} is a UCLA Electrical Engineering student (B.S. expected June 2029) doing hardware research at the California NanoSystems Institute and the Mechatronics and Controls Lab. The device has been validated in flight on a hybrid rocket reaching ~13,400&nbsp;ft and in multiple 24–36 hour hackathons.</p>
 
-    <section id="experience">
-      <h2>Research</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">Aug 2026 – Present</div>
-          <div>
-            <h3>Di Carlo Lab · California NanoSystems Institute at UCLA</h3>
-            <ul class="points">
-              <li>Designed and tuned an ESP32 PI control loop regulating a cold plate driven by 4 Peltier modules, integrated into eBot Bio's agentic AI platform for autonomous bioassays.</li>
-              <li>Reworked the 3D-printed enclosure, lowering the minimum cold plate temperature from 2&nbsp;°C to −8&nbsp;°C.</li>
-              <li>Built the full power harness off a switching supply, with low-side MOSFET switching for the Peltier loads.</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="when">Jun 2026 – Present</div>
-          <div>
-            <h3>Mechatronics and Controls Lab · UCLA MAE</h3>
-            <ul class="points">
-              <li>Designed the main 2-layer PCB and pressure sensor board for a 6-DOF AUV: cascaded buck-LDO regulation, fusing, ESD and reverse-polarity protection, a 9-axis IMU and an ESP32–Raspberry Pi compute stack. Validated the power circuitry in LTspice.</li>
-              <li>Integrated electronics with the mechanical and systems subteams on a 10-person team, and co-owned the electrical BOM.</li>
-              <li>Presented design updates and tradeoffs to non-electrical engineers at weekly meetings.</li>
-            </ul>
-          </div>
-        </li>
-      </ol>
-    </section>
+    <div class="tablewrap">
+      <table>
+        <caption>Device Information</caption>
+        <tr><th>Part number</th><th>Package</th><th>Location</th></tr>
+        <tr><td>{{ site.part_number }}</td><td>UCLA B.S. EE</td><td>{{ site.location }}</td></tr>
+      </table>
+    </div>
+    <p class="more"><a href="{{ '/about/' | relative_url }}">Full specifications →</a></p>
+  </div>
+</div>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <p class="date">Nov 2025 – Jun 2026</p>
-          <h3>UCLA Rocket Project Avionics: Valkyrie</h3>
-          <p>Helped design 4-layer ESP32 avionics PCBs with LoRa telemetry, GPS, IMU and dual altimeters for a hybrid rocket that reached ~13,400&nbsp;ft. Worked on power design (buck-LDO, ideal-diode ORing), assembly, cabling and board-level rework.</p>
-          <p class="stack">ESP32 · 4-layer PCB · LoRa · Power</p>
-        </article>
-        <article class="card">
-          <p class="date">Apr 2026 · IdeaHacks</p>
-          <h3>Vitagotchi</h3>
-          <p>A two-ESP32 wearable that classifies health state in real time from accelerometer, heart-rate and temperature data, plus a plush desktop companion with OLED displays and LLM-generated responses. Built in 36 hours with a team of 4.</p>
-          <p class="stack">ESP32 · ESP-NOW · Firebase · LLM</p>
-        </article>
-        <article class="card">
-          <p class="date">Mar 2026</p>
-          <h3>Bare-Metal STM32 Signal Acquisition</h3>
-          <p>Drove STM32F446 peripherals through direct register access, sampling the ADC at 1&nbsp;kHz with timer-triggered DMA into a 1000-sample buffer, then streamed data over UART to a Python/Matplotlib plotter.</p>
-          <p class="stack">STM32 · C · DMA · Python</p>
-        </article>
-        <article class="card">
-          <p class="date">Feb 2026</p>
-          <h3>Custom ESP32 Development Board</h3>
-          <p>Designed and routed a 2-layer ESP32 dev board from component selection to bring-up, with a matched USB differential pair, ground stitching, BOOT/RESET switches and reverse-polarity and ESD protection.</p>
-          <p class="stack">KiCad · ESP32 · USB</p>
-        </article>
-      </div>
-    </section>
+<h2 class="sec"><span class="n">4</span>Application Notes: Projects</h2>
+<div class="tablewrap">
+  <table>
+    <tr><th>Doc</th><th>Title</th><th>Date</th></tr>
+    {% assign projects = site.projects | sort: "order" %}
+    {% for p in projects %}
+    <tr>
+      <td class="num">{{ p.doc }}</td>
+      <td><a href="{{ p.url | relative_url }}">{{ p.title }}</a><span class="row-sum">{{ p.summary }}</span></td>
+      <td class="nowrap">{{ p.period }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
 
-    <section id="awards">
-      <h2>Awards</h2>
-      <ol class="timeline">
-        <li>
-          <div class="when">2026</div>
-          <div>
-            <h3>4th Place, ACM AI Mini ML Challenge (UCLA)</h3>
-            <p>Transfer-learning image classifier with 98.648% accuracy; 4th of 23 teams (team of 2, 8 hours).</p>
-          </div>
-        </li>
-        <li>
-          <div class="when">2026</div>
-          <div>
-            <h3>"Most Slayful UI" (Best UI/UX), QWER Hacks</h3>
-            <p>Full-stack LGBTQ event platform using web scraping and the Gemini API; chosen from 19 teams (team of 3, 24 hours).</p>
-          </div>
-        </li>
-      </ol>
-    </section>
+<h2 class="sec"><span class="n">5</span>Latest Technical Notes: Blog</h2>
+{% if site.posts.size > 0 %}
+<div class="tablewrap">
+  <table>
+    <tr><th>Doc</th><th>Title</th><th>Date</th></tr>
+    {% for post in site.posts limit: 3 %}
+    <tr>
+      <td class="num">TN-{{ post.date | date: "%y%m%d" }}</td>
+      <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
+      <td class="nowrap">{{ post.date | date: "%b %-d, %Y" }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<p class="more"><a href="{{ '/blog/' | relative_url }}">All technical notes →</a></p>
+{% else %}
+<p>No technical notes yet.</p>
+{% endif %}
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>I'm based in Los Angeles. The best way to reach me is by email.</p>
-      <div class="actions">
-        <a class="btn primary" href="mailto:liujustin1@g.ucla.edu">liujustin1@g.ucla.edu</a>
-        <a class="btn" href="https://github.com/25liujustin1" target="_blank" rel="noopener">GitHub</a>
-        <!-- TODO: add your LinkedIn URL here, e.g.
-        <a class="btn" href="https://www.linkedin.com/in/YOUR-NAME" target="_blank" rel="noopener">LinkedIn</a> -->
-      </div>
-    </section>
-  </main>
-
-  <footer>© <span id="year"></span> Justin Ren Liu</footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+<h2 class="sec"><span class="n">6</span>Pin Configuration and Functions</h2>
+{% include pinout.html %}

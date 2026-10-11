@@ -1,0 +1,40 @@
+title: Justin Ren Liu
+part_number: JRL-2029
+tagline: Electrical Engineer for PCB Design, Power Systems and Embedded Firmware
+description: >-
+  Justin Ren Liu is a UCLA Electrical Engineering student working on PCB design,
+  power systems and bare-metal firmware for rockets, underwater robots and lab hardware.
+author: Justin Ren Liu
+email: liujustin1@g.ucla.edu
+github: 25liujustin1
+location: Los Angeles, CA
+
+url: https://25liujustin1.github.io
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:year/:month/:title/
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope: { path: "", type: projects }
+    values: { layout: doc }
+  - scope: { path: "", type: posts }
+    values: { layout: doc }
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

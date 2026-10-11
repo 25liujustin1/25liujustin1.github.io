@@ -1,0 +1,21 @@
+---
+layout: page
+title: Application Notes
+kind: Projects
+---
+<p>Each application note covers one project: what it does, my role, and the design decisions behind it.</p>
+
+<div class="tablewrap">
+  <table>
+    <tr><th>Doc</th><th>Title</th><th>Date</th><th>Tags</th></tr>
+    {% assign projects = site.projects | sort: "order" %}
+    {% for p in projects %}
+    <tr>
+      <td class="num">{{ p.doc }}</td>
+      <td><a href="{{ p.url | relative_url }}">{{ p.title }}</a><span class="row-sum">{{ p.summary }}</span></td>
+      <td class="nowrap">{{ p.period }}</td>
+      <td>{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>

@@ -1,0 +1,188 @@
+:root {
+  --desk: #d9dadc;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #555555;
+  --rule: #c00000;
+  --line: #bdbdbd;
+  --head: #e9ecef;
+  --link: #0645ad;
+  --code-bg: #f4f5f7;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+a { color: var(--link); }
+
+.page {
+  max-width: 880px;
+  margin: 28px auto;
+  background: var(--paper);
+  padding: 28px 40px 24px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- header and nav ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 6px 12px;
+  flex-wrap: wrap;
+  border-bottom: 4px solid var(--rule);
+  padding-bottom: 6px;
+}
+.logo { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+.logo span { color: var(--rule); }
+.docid { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 0; margin: 0 0 4px; border-bottom: 1px solid var(--line); }
+.tabs a {
+  padding: 7px 14px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+}
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* ---------- front page ---------- */
+.partno { font-size: 2.2rem; font-weight: 700; margin: 18px 0 0; letter-spacing: -0.01em; }
+.subtitle { font-size: 1.2rem; font-weight: 500; margin: 2px 0 18px; }
+.front { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
+.front h2.sec { margin-top: 6px; }
+.more { margin: 6px 0 0; font-size: 0.9rem; }
+
+h2.sec {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 28px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--ink);
+}
+h2.sec .n { display: inline-block; min-width: 2.2em; }
+
+ul { margin: 0; padding-left: 18px; }
+li { margin-bottom: 3px; }
+.note { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- tables ---------- */
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 6px 0 12px; }
+caption { text-align: left; font-weight: 600; font-size: 0.88rem; padding-bottom: 4px; }
+th, td { border: 1px solid var(--line); padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: var(--head); font-weight: 600; }
+td.num, .num { font-family: var(--mono); white-space: nowrap; }
+td.num { text-align: center; }
+.nowrap { white-space: nowrap; }
+.row-sum { display: block; color: var(--muted); font-size: 0.82rem; margin-top: 2px; }
+
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0 6px;
+  margin: 1px 4px 1px 0;
+  color: var(--muted);
+  background: #fafafa;
+}
+
+/* ---------- pinout ---------- */
+figure { margin: 10px 0; text-align: center; }
+figure svg { width: 100%; max-width: 440px; height: auto; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); }
+figcaption { font-size: 0.82rem; font-weight: 600; margin-top: 4px; }
+
+/* ---------- documents (app notes, tech notes, about) ---------- */
+.kind {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--rule);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 22px 0 0;
+}
+.doc-title { font-size: 1.9rem; line-height: 1.2; margin: 4px 0 14px; }
+.meta-table { width: auto; min-width: 60%; }
+.meta-table th { width: 7em; }
+
+.abstract { border-left: 4px solid var(--rule); background: #fafafa; padding: 10px 14px; margin: 16px 0 6px; }
+.abstract-label { font-weight: 700; font-size: 0.85rem; margin: 0 0 2px; }
+.abstract p { margin: 0; }
+
+/* auto-numbered sections, like a real datasheet */
+.prose { counter-reset: h2; }
+.prose h2 {
+  counter-increment: h2;
+  counter-reset: h3;
+  font-size: 1.05rem;
+  margin: 28px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--ink);
+}
+.prose h2::before { content: counter(h2); display: inline-block; min-width: 2.2em; }
+.prose h3 { counter-increment: h3; font-size: 0.98rem; margin: 18px 0 6px; }
+.prose h3::before { content: counter(h2) "." counter(h3); display: inline-block; min-width: 2.8em; }
+.prose p { margin: 8px 0; }
+.prose img { max-width: 100%; height: auto; border: 1px solid var(--line); }
+.prose table { width: 100%; }
+.prose code { font-family: var(--mono); font-size: 0.85em; background: var(--code-bg); padding: 1px 4px; border-radius: 2px; }
+.prose pre { background: var(--code-bg); border: 1px solid var(--line); padding: 10px 12px; overflow-x: auto; font-size: 0.85rem; line-height: 1.45; }
+.prose pre code { background: none; padding: 0; }
+.prose blockquote { margin: 12px 0; padding: 4px 14px; border-left: 4px solid var(--line); color: var(--muted); }
+
+.back { margin-top: 28px; font-size: 0.9rem; }
+
+/* blog list */
+.postlist { list-style: none; padding: 0; margin: 12px 0 0; }
+.postlist li { padding: 14px 0; border-top: 1px solid var(--line); }
+.postlist h3 { margin: 2px 0 4px; font-size: 1.1rem; }
+.postlist h3 a { color: var(--ink); text-decoration: none; }
+.postlist h3 a:hover { color: var(--link); text-decoration: underline; }
+.postlist p { margin: 0 0 4px; }
+.post-meta { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- footer ---------- */
+.pagefoot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 36px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ---------- code highlighting (rouge, light) ---------- */
+.highlight .c, .highlight .c1, .highlight .cm { color: #6a737d; font-style: italic; }
+.highlight .k, .highlight .kd, .highlight .kt { color: #d73a49; }
+.highlight .s, .highlight .s1, .highlight .s2 { color: #032f62; }
+.highlight .mi, .highlight .mh, .highlight .mf { color: #005cc5; }
+.highlight .nf { color: #6f42c1; }
+.highlight .cp { color: #e36209; }
+
+@media (max-width: 680px) {
+  .page { margin: 0; padding: 18px 16px; box-shadow: none; }
+  .front { grid-template-columns: 1fr; }
+  .partno { font-size: 1.8rem; }
+  .doc-title { font-size: 1.5rem; }
+  .tabs a { padding: 7px 10px; }
+  .meta-table { min-width: 100%; }
+}
