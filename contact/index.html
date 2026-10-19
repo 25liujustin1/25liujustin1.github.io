@@ -1,0 +1,39 @@
+---
+layout: page
+title: Contact
+lead: Email is the best way to reach me. I usually reply within a day or two.
+---
+<dl class="contact">
+  <div>
+    <dt>Email</dt>
+    <dd>
+      <a class="contact-main" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <span class="contact-actions">
+        <button class="btn" type="button" data-copy="{{ site.email }}">Copy</button>
+        <a class="btn" href="mailto:{{ site.email }}">Send email ↗</a>
+      </span>
+    </dd>
+  </div>
+  {% if site.linkedin %}
+  <div>
+    <dt>LinkedIn</dt>
+    <dd><a class="contact-main" href="https://www.linkedin.com/in/{{ site.linkedin }}/">linkedin.com/in/{{ site.linkedin }}</a></dd>
+  </div>
+  {% endif %}
+  <div>
+    <dt>Location</dt>
+    <dd>{{ site.location }} (UCLA)</dd>
+  </div>
+</dl>
+
+<script>
+  // Copy buttons: copy the address and say so on the button for a moment.
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var label = b.textContent;
+      function done(msg) { b.textContent = msg; setTimeout(function () { b.textContent = label; }, 1600); }
+      if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(function () { done('Copied ✓'); }, function () { done('Copy failed'); });
+      else done('Copy failed');
+    });
+  });
+</script>

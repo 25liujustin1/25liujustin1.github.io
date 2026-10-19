@@ -1,4 +1,4 @@
-"""Convert a KiCad .kicad_pcb file into an interactive SVG for the home page.
+"""Convert a KiCad .kicad_pcb file into an SVG board render (used on the business card page, /card/).
 
 Usage:
     python tools/kicad_to_svg.py path/to/board.kicad_pcb _includes/board.svg [--links links.json]

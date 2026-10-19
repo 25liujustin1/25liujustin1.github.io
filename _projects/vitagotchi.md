@@ -5,6 +5,7 @@ order: 2
 date: 2026-04-01
 period: Apr 2026
 role: UCLA IdeaHacks 2026 (36 hours, team of 4)
+context: Hackathon
 summary: A two-ESP32 wearable that classifies health state in real time, plus a plush desktop companion with OLED displays and LLM-generated responses.
 tags: [esp32, wearable, hackathon, power]
 ---

@@ -8,25 +8,22 @@ permalink: /about/
   <div>
     <h2>Features</h2>
     <ul>
-      <li>2- and 4-layer PCB design in KiCad and Autodesk</li>
-      <li>Power regulation: cascaded buck-LDO, ideal-diode ORing, reverse-polarity and ESD protection</li>
-      <li>Bare-metal STM32 firmware (GPIO, UART, timers, DMA)</li>
-      <li>ESP32 control loops and wireless (LoRa, ESP-NOW)</li>
-      <li>Board bring-up, soldering and rework</li>
-      <li>Languages: C/C++, Python, Verilog</li>
+      <li>Prefers to learn by applying theory to real-world projects</li>
+      <li>Operates across the stack, from PCBs and CAD to firmware and Verilog</li>
+      <li>Hands-on at the bench, from soldering and crimping to bring-up and rework</li>
     </ul>
 
     <h2>Applications</h2>
     <ul>
-      <li>Rocket avionics</li>
-      <li>Autonomous underwater vehicles</li>
-      <li>Lab automation and bioassay hardware</li>
-      <li>Wearables and hackathon prototypes</li>
+      <li>Digital design and FPGA development</li>
+      <li>Embedded systems</li>
+      <li>PCB design and hardware integration</li>
+      <li>Robotics</li>
     </ul>
   </div>
   <div>
     <h2>Description</h2>
-    <p>The {{ site.part_number }} is a UCLA Electrical Engineering student (B.S. expected June 2029) doing hardware research at the California NanoSystems Institute and the Mechatronics and Controls Lab. The device has been validated in flight on a hybrid rocket reaching ~13,400&nbsp;ft and in multiple 24–36 hour hackathons.</p>
+    <p>The {{ site.part_number }} is a UCLA Electrical Engineering student (B.S. expected June 2029) currently deployed in two research labs: on underwater robots in the Mechatronics and Controls Lab, and on a lab automation robot in the Di Carlo Lab at the California NanoSystems Institute. Previous deployments include the avionics of a hybrid rocket that reached ~13,400&nbsp;ft and prototypes for multiple 24–36 hour hackathons.</p>
     <div class="tablewrap">
       <table>
         <caption>Device Information</caption>
@@ -37,54 +34,26 @@ permalink: /about/
   </div>
 </div>
 
-## Absolute Maximum Ratings (Demonstrated)
+## Theory of Operation
 
-| Parameter | MIN | MAX | UNIT |
-|---|:-:|:-:|:-:|
-| Continuous hackathon operation | | 36 | h |
-| Cold plate temperature reached (Di Carlo Lab) | −8 | | °C |
-| Rocket apogee supported (Valkyrie) | | ~13,400 | ft |
-| PCB layer count | 2 | 4 | layers |
-| ADC sample rate, bare-metal STM32 | | 1 | kHz |
-| Team size | 2 | 10 | people |
+<figure class="epigraph">
+  <blockquote>Any sufficiently advanced technology is indistinguishable from magic.</blockquote>
+  <figcaption>Arthur C. Clarke</figcaption>
+</figure>
 
-<p class="note">Stresses beyond those listed may be possible but have not yet been tested.</p>
+I've always wanted to know how things work. Mechanical things give up their secrets if you look closely enough: follow the parts, see what pushes what, and eventually it makes sense. Electronics never did. I could stare at a circuit board for as long as I liked and it wouldn't explain itself, because the part that makes it work can't be seen. As a kid, that made it feel like magic. How can a stone think?
 
-## Recommended Operating Conditions
+I wanted to understand all of it, and I wanted to build things of my own. Electrical engineering lets me do both. For me, it's also the hardest to learn alone. Software and CAD show you right away whether something works, so I've picked up a lot of both on my own. Circuits don't: the physics behind them stays invisible, and mistakes cost parts. So that's what I chose to study.
 
-| Parameter | Value |
+## Low-Power Modes
+
+| Mode | Description |
 |---|---|
-| Field | Electrical Engineering (B.S.) |
-| Graduation | June 2029 |
-| Coursework | Signals and Systems; Computer Organization; Logic Design of Digital Systems |
-| Location | Los Angeles, CA |
+| READ | 5,916,506 words of *The Wandering Inn* read to date. |
+| PONG | Ping pong, whenever a table is free. |
+| PLAY | generals.io, openfront.io, Terraria. |
 
-## Skills and Tools
-
-| Category | Details |
-|---|---|
-| Technical | Multi-layer PCB design, power systems, bare-metal firmware, hardware integration, soldering |
-| Languages | C/C++, Python, Verilog |
-| Tools | KiCad, Autodesk (PCB/CAD), SolidWorks, LTspice, oscilloscope, Git |
-
-## Detailed Description: Research {#research}
-
-### Di Carlo Lab, California NanoSystems Institute · Aug 2026 – Present
-
-- Designed and tuned an ESP32 PI control loop for a cold plate driven by 4 Peltier modules, integrated into eBot Bio's agentic AI platform for autonomous bioassays.
-- Reworked the 3D-printed enclosure, taking the cold plate from 2&nbsp;°C down to −8&nbsp;°C.
-- Built the power harness off a switching supply, with low-side MOSFET switching for the Peltier loads.
-
-### Mechatronics and Controls Lab, UCLA MAE · Jun 2026 – Present
-
-- Designed the main 2-layer PCB and pressure sensor board for a 6-DOF AUV, with cascaded buck-LDO regulation, fusing, ESD and P-channel MOSFET reverse-polarity protection, a 9-axis IMU and an ESP32–Raspberry Pi compute stack. Validated the power circuitry in LTspice.
-- Worked with the mechanical and systems subteams on a 10-person team to integrate electronics into the vehicle, and co-owned the electrical BOM across motors, ESCs and batteries.
-- Presented design updates and tradeoffs to non-electrical engineers at weekly electronics meetings.
-
-## Qualification: Awards
-
-- **4th Place, ACM AI Mini ML Challenge (UCLA) 2026.** Transfer-learning image classifier at 98.648% accuracy; 4th of 23 teams (team of 2, 8 hours).
-- **"Most Slayful UI" (Best UI/UX), QWER Hacks 2026.** Full-stack LGBTQ event platform with web scraping and the Gemini API; chosen from 19 teams (team of 3, 24 hours).
+<p class="note">The device enters these modes automatically when no boards are on the bench.</p>
 
 ## Pin Configuration and Functions
 
@@ -96,5 +65,5 @@ permalink: /about/
 |---|:-:|---|
 | Aug 2026 | D | Joined Di Carlo Lab (CNSI). |
 | Jun 2026 | C | Joined Mechatronics and Controls Lab. |
-| Apr 2026 | B | Shipped Vitagotchi at IdeaHacks. |
-| Nov 2025 | A | Initial release. Joined UCLA Rocket Project avionics. |
+| Nov 2025 | B | Joined UCLA Rocket Project avionics. |
+| Sep 2025 | A | Initial release. Started at UCLA. |

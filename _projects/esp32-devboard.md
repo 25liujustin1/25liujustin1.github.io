@@ -5,6 +5,7 @@ order: 4
 date: 2026-02-01
 period: Feb 2026
 role: Personal project
+context: Personal
 summary: A 2-layer ESP32 development board taken from component selection to bring-up, with a matched USB differential pair and protection circuitry.
 tags: [pcb, esp32, usb]
 ---

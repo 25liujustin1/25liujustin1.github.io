@@ -3,12 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% seo %}
+  {% if page.title %}{% seo %}{% else %}
+  {% comment %}The home page's tab title is kept short; search results and link previews still get the full tagline.{% endcomment %}
+  <title>{{ site.title }} · Electrical Engineer</title>
+  {% seo title=false %}{% endif %}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}?v=4" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon-16.png' | relative_url }}?v=4">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32.png' | relative_url }}?v=4">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}?v=4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
-  {% feed_meta %}
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Space+Mono:wght@400;700&family=Caveat:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body class="home">
   {% if page.url != "/" %}
@@ -23,5 +29,6 @@
   <main class="home-main">
     {{ content }}
   </main>
+  <script src="{{ '/assets/js/pets.js' | relative_url }}" data-vendor="{{ '/assets/vendor/esheep/' | relative_url }}" data-pets="{{ '/assets/pets/' | relative_url }}"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ order: 1
 date: 2025-11-01
 period: Nov 2025 – Jun 2026
 role: Avionics team member, UCLA Rocket Project
+context: Team
 summary: Multiple 4-layer ESP32 avionics PCBs with LoRa telemetry, GPS, IMU and dual altimeters for a hybrid rocket that reached ~13,400 ft.
 tags: [pcb, power, rocketry, esp32]
 ---

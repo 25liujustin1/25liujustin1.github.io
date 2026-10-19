@@ -1,21 +1,20 @@
 title: Justin Ren Liu
 part_number: JRL-2029
-tagline: Electrical Engineer for PCB Design, Power Systems and Embedded Firmware
+tagline: Electrical Engineer for PCB Design, Firmware and Hardware Integration
 description: >-
-  Justin Ren Liu is a UCLA Electrical Engineering student working on PCB design,
-  power systems and bare-metal firmware for rockets, underwater robots and lab hardware.
+  Justin Ren Liu is a UCLA Electrical Engineering student who designs PCBs, writes firmware
+  and builds hardware for rockets, underwater robots and lab automation.
 author: Justin Ren Liu
 email: liujustin1@g.ucla.edu
 github: 25liujustin1
+linkedin: justin-ren-liu   # the part after linkedin.com/in/ (contact page, datasheet pin 3, home page, footer)
 location: Los Angeles, CA
 
-# Board renders shown on the site. Each is a file in _includes/boards/.
-# Swap the hand-drawn decoder for the KiCad render once it exists
-# (python tools/kicad_to_svg.py ... _includes/boards/decoder.svg).
+# Board renders shown on the site. Each is a file in _includes/boards/,
+# made with: python tools/kicad_to_svg.py board.kicad_pcb _includes/boards/card.svg
 boards:
-  home: decoder-hand.svg
   card:            # e.g. card.svg, rendered from the business card's KiCad file
-show_card_link: true   # small "got my card?" link on the home page
+show_card_link: false  # small "got my card?" link on the home page
 
 url: https://25liujustin1.github.io
 baseurl: ""
@@ -25,8 +24,6 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 
-permalink: /blog/:year/:month/:title/
-
 collections:
   projects:
     output: true
@@ -35,11 +32,8 @@ collections:
 defaults:
   - scope: { path: "", type: projects }
     values: { layout: post }
-  - scope: { path: "", type: posts }
-    values: { layout: post }
 
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
 
 exclude:

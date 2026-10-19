@@ -5,6 +5,7 @@ order: 3
 date: 2026-03-01
 period: Mar 2026
 role: Personal project
+context: Personal
 summary: Register-level STM32F446 drivers sampling the ADC at 1 kHz with timer-triggered DMA, streamed over UART to a Python plotter.
 tags: [firmware, stm32, c, python]
 ---

@@ -1,0 +1,16 @@
+---
+layout: page
+title: Résumé
+---
+{% assign pdf = '/assets/justin-ren-liu-resume.pdf' | relative_url %}
+<p class="actions">
+  <a class="btn primary" href="{{ pdf }}" download>Download PDF ↓</a>
+  <a class="btn" href="{{ pdf }}" target="_blank" rel="noopener">Open in new tab ↗</a>
+</p>
+
+{% comment %}The résumé shown as images, one per page, made from the PDF by tools/resume_to_png.py.
+Images look the same in every browser (embedded PDFs don't show on Android at all), and the buttons above give the real PDF.{% endcomment %}
+{% assign pages = site.static_files | where_exp: "f", "f.path contains '/assets/resume-'" | sort: "path" %}
+<a class="resume-sheets" href="{{ pdf }}" target="_blank" rel="noopener" aria-label="Résumé (opens the PDF)">
+  {% for f in pages %}<img src="{{ f.path | relative_url }}" alt="{% if forloop.first %}Résumé of Justin Ren Liu, page {{ forloop.index }}{% else %}Page {{ forloop.index }}{% endif %}" width="1700" height="2200"{% unless forloop.first %} loading="lazy"{% endunless %}>{% endfor %}
+</a>

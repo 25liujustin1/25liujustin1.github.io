@@ -3,42 +3,29 @@ layout: home
 ---
 <div class="home-grid">
   <section class="intro">
-    <p class="eyebrow">{{ site.part_number }} · UCLA ELECTRICAL ENGINEERING '29</p>
-    <h1>Justin Ren Liu</h1>
-    <p class="lead">I design PCBs, power systems and bare-metal firmware for rockets, underwater robots and lab hardware.</p>
+    <p class="eyebrow">UCLA ELECTRICAL ENGINEERING '29</p>
+    <h1>Justin Ren Liu<button class="pet-btn on-name" type="button" data-pet="ic555" hidden title="Release a 555" aria-label="Release a 555 timer"><img src="{{ '/assets/pets/ic555-icon.png' | relative_url }}" alt=""></button></h1>
+    <p class="lead">I design PCBs, write firmware and build hardware for rockets, underwater robots and lab automation.</p>
     <nav class="decoder-nav" aria-label="Site">
       {% for item in site.data.nav %}
       <a href="{% include nav-href.html url=item.url %}" data-addr="{{ forloop.index0 }}" data-name="{{ item.name }}">{{ item.name }} <code>{{ item.addr }}</code></a>
       {% endfor %}
     </nav>
-    <p class="small-links">
-      <a href="https://github.com/{{ site.github }}">GitHub</a>
-      {% if site.show_card_link %} · <a href="{{ '/card/' | relative_url }}">Got my business card? See it here →</a>{% endif %}
-    </p>
+    {% if site.show_card_link %}
+    <p class="small-links"><a href="{{ '/card/' | relative_url }}">Got my business card? See it here →</a></p>
+    {% endif %}
   </section>
 
-  <section class="bench">
-    {% include boards/{{ site.boards.home }} %}
-
-    <div class="status">
-      <span class="logic" id="logic"></span>
-      <a class="go" id="go" href="{{ '/about/' | relative_url }}">Go →</a>
+  <section class="sim">
+    <div class="frame">
+      <div class="bar"><span><b>decoder.circuitjs</b> · simulating</span><span id="clock">t = 0.00 ms</span></div>
+      <svg id="sch" viewBox="0 0 1000 470" role="img" aria-label="Simulated 74HC139 decoder circuit. Its address switches select which page's LED lights."></svg>
     </div>
-    <div class="status top">
-      <table class="truth">
-        <tr><th>A1</th><th>A0</th><th class="ol">Y0</th><th class="ol">Y1</th><th class="ol">Y2</th><th class="ol">Y3</th><th>Page</th></tr>
-        {% for item in site.data.nav %}
-        {% assign n = forloop.index0 %}
-        <tr data-addr="{{ n }}">
-          <td>{{ item.addr | slice: 0 }}</td><td>{{ item.addr | slice: 1 }}</td>
-          {% for k in (0..3) %}<td>{% if k == n %}L{% else %}H{% endif %}</td>{% endfor %}
-          <td>{{ item.name }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-      <p class="hint">Flip SW1, hover a page,<br>or click a lit LED.<br>Outputs are active-low.</p>
+    <div class="status">
+      <p class="hint">Flip switches A1 and A0, or click an LED to open its page.</p>
+      <a class="go" id="go" href="{{ '/about/' | relative_url }}">Go →</a>
     </div>
   </section>
 </div>
 
-<script src="{{ '/assets/js/decoder.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/circuit.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
