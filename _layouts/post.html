@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign back_url = "/projects/" %}{% assign back_label = "All projects" %}
 
-<article class="article{% if page.image %} has-media{% endif %}">
+<article class="article{% if page.image or page.video %} has-media{% endif %}">
   <p class="back"><a href="{{ back_url | relative_url }}">← {{ back_label }}</a></p>
   <header class="article-head">
     <h1>{{ page.title }}</h1>
@@ -15,10 +15,17 @@ layout: default
 
   {% comment %}With an `image` in the front matter, the photo sits on the left of the sections and the text on the right.
   `images` (a list of src, alt and optional caption) adds more photos beside the first. Give each photo its
-  width ÷ height as `image_ratio` / `ratio` and photos side by side come out the same height.{% endcomment %}
-  {% if page.image %}
+  width ÷ height as `image_ratio` / `ratio` and photos side by side come out the same height.
+  A `video` (short, muted MP4) takes the first photo's place and plays on a loop; `video_poster` shows while it loads.{% endcomment %}
+  {% if page.image or page.video %}
   <div class="article-media{% if page.images %} multi{% endif %}">
-    <figure style="flex-grow: {{ page.image_ratio | default: 1 }}"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}">{% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}</figure>
+    <figure style="flex-grow: {{ page.image_ratio | default: 1 }}">
+      {%- if page.video -%}
+      <video src="{{ page.video | relative_url }}"{% if page.video_poster %} poster="{{ page.video_poster | relative_url }}"{% endif %} autoplay muted loop playsinline aria-label="{{ page.image_alt | escape }}"></video>
+      {%- else -%}
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}">
+      {%- endif -%}
+      {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}</figure>
     {% for im in page.images %}
     <figure style="flex-grow: {{ im.ratio | default: 1 }}"><img src="{{ im.src | relative_url }}" alt="{{ im.alt | escape }}">{% if im.caption %}<figcaption>{{ im.caption }}</figcaption>{% endif %}</figure>
     {% endfor %}

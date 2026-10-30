@@ -161,12 +161,12 @@ body:has(.article.has-media) .wrap { max-width: 1360px; }
 .has-media .article-head .tags { justify-content: center; }
 .article-media { position: sticky; top: 24px; margin: 56px 0 0; }   /* top lines up with the first section heading */
 .article-media figure { margin: 0; }
-.article-media img { display: block; width: auto; max-width: 100%; height: auto; max-height: 560px; border-radius: var(--wobble); border: 2px solid var(--ink); }
+.article-media img, .article-media video { display: block; width: auto; max-width: 100%; height: auto; max-height: 560px; border-radius: var(--wobble); border: 2px solid var(--ink); }
 .article-media figcaption { font-family: var(--hand); font-size: 1.15rem; line-height: 1.2; color: var(--ink); margin-top: 6px; }
 /* several photos: side by side, each a bit shorter */
 .article-media.multi { display: flex; gap: 16px; align-items: flex-start; }
 .article-media.multi figure { flex-shrink: 1; flex-basis: 0; min-width: 0; }
-.article-media.multi img { width: 100%; max-height: none; }
+.article-media.multi img, .article-media.multi video { width: 100%; max-height: none; }
 @media (max-width: 900px) {
   .article.has-media { grid-template-columns: 1fr; }
   .article-media { position: static; margin-top: 20px; }

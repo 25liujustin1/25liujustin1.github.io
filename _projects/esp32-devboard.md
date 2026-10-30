@@ -6,9 +6,9 @@ period: Feb 2026
 role: Personal project
 context: Personal
 summary: A 2-layer ESP32-S3 development board taken from component selection to bring-up, with a USB-C port, a matched USB differential pair and protection circuitry.
-tags: [pcb, esp32, usb]
+tags: [pcb, esp32, fusion 360]
 image: /assets/img/esp32-devboard.jpg
-image_alt: "The finished red 2-layer development board held in hand: an ESP32-S3-WROOM-1 module, USB-C connector, BOOT and RESET buttons, an RGB LED and labeled pin headers down both sides"
+image_alt: "The finished red 2-layer development board held in hand, with an ESP32-S3-WROOM-1 module, USB-C connector, BOOT and RESET buttons, an RGB LED and labeled pin headers down both sides"
 image_caption: Finished board
 image_ratio: 0.75
 images:
@@ -18,10 +18,8 @@ images:
     caption: First upload, half soldered
 ---
 
-This is the first development board I designed on my own, taking it all the way from choosing components to bringing up the finished board. It's built around an ESP32-S3-WROOM-1 module on a 2-layer PCB, with every usable pin broken out to labeled headers down both sides.
+I wanted to design a board entirely on my own, from picking parts to getting code running on it, so I made my own ESP32 dev board. It's a 2-layer board designed in Fusion 360 around an ESP32-S3-WROOM-1 module, with the pins broken out to labeled headers down both sides.
 
-Power and data come in through a USB-C port, with the two 5.1&nbsp;kΩ resistors USB-C needs to request power. I routed the USB D+ and D− lines as a matched differential pair, placed decoupling capacitors at the module's power pins, and stitched the ground with vias. To keep the board safe from mistakes and static, it has reverse-polarity protection and ESD protection on the USB lines.
+Power and data come in over USB-C, with the two 5.1&nbsp;kΩ resistors USB-C needs before it'll supply power. I routed the USB data lines as a matched differential pair, put decoupling caps right at the module, stitched the ground with vias, and added reverse-polarity and ESD protection so one mistake wouldn't kill it. BOOT and RESET buttons, an RGB LED and a power LED round it out.
 
-For flashing and debugging, BOOT and RESET buttons sit in the middle of the board, alongside an RGB LED for status and a red power LED.
-
-I brought it up before it was fully assembled. With the headers and RESET button still missing, I plugged it in over USB-C, uploaded a test program from PlatformIO, and watched it print "alive" once a second over serial. That was the moment I knew the power, USB and module were all working.
+I didn't wait until it was fully assembled to test it. With the headers and RESET button still missing, I plugged it in, uploaded a test program and watched it print "alive" every second over serial. That meant the power, USB and module were all working.

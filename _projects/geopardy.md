@@ -8,15 +8,18 @@ context: Personal
 summary: A multiplayer, Jeopardy-style geography game where players race to click the named country on a world map, with live rooms, chat and a speed-based leaderboard.
 tags: [javascript, node.js, socket.io, web]
 image: /assets/img/geopardy.jpg
-image_alt: "Geopardy in a browser: a clickable world map with the United States highlighted green, a leaderboard label, and a sidebar with a Start Game button, the room code and a chat log"
+video: /assets/video/geopardy-gameplay.mp4
+video_poster: /assets/img/geopardy-poster.jpg
+image_alt: "A round of Geopardy. After a 3-2-1 countdown, country names like Nicaragua, Greece, Oman, Taiwan, Algeria and Somalia appear over the world map, each correct country turns dark green, a wrong guess triggers a lockout countdown, and the leaderboard score climbs to 31"
+image_caption: A round of Geopardy
 ---
 
-Geopardy is a geography game I built over winter break for playing with friends. Everyone joins the same room, the game calls out a country, and the first player to find it on the world map and click it gets the points.
+Geopardy is a geography game I made over winter break. Everyone joins a room, the game calls out a country, and whoever clicks it on the map first gets the points.
 
-The map is an SVG with over 200 clickable countries and territories. Tiny island nations that would be impossible to hit get circular targets around them. Speed matters: a correct click within 2 seconds is worth 10 points, within 4 seconds 7, and after that 5. A wrong guess flashes red and locks you out for 2 seconds, so spamming clicks doesn't pay. Once every country has been called, the game announces the winner and the host can start a new round.
+The map has over 200 clickable countries and territories, and the really tiny island nations get circles around them so you can actually hit them. Faster answers are worth more, with 10 points within 2 seconds, 7 within 4, and 5 after that. Guess wrong and you're locked out for 2 seconds, so you can't just spam-click your way across Europe. Once every country has been called, the game names a winner and the host can start another round.
 
-Behind it is a Node.js server using Express and Socket.io. Each game lives in its own room with a random six-character code, so several groups can play at once. The server picks countries without repeats, keeps everyone's score and pushes leaderboard updates live, and runs the room's chat. If the host leaves, it hands host controls to the next player instead of ending the game.
+It runs on a Node.js server with Express and Socket.io. Every game gets its own room with a random six-character code, so multiple groups can play at once. The server picks countries without repeats, keeps score, updates the leaderboard live and runs the chat. If the host leaves, someone else becomes host instead of the game just dying.
 
-Play it: [geopardy-quiz.onrender.com](https://geopardy-quiz.onrender.com/) (hosted on Render's free tier, so the first load can take up to a minute while the server wakes up)
+You can play it at [geopardy-quiz.onrender.com](https://geopardy-quiz.onrender.com/). It's on Render's free tier, so the first load can take up to a minute while the server wakes up.
 
-Source code: [github.com/25liujustin1/geopardy](https://github.com/25liujustin1/geopardy)
+The source code is at [github.com/25liujustin1/geopardy](https://github.com/25liujustin1/geopardy).
