@@ -34,17 +34,6 @@ permalink: /about/
   </div>
 </div>
 
-## Theory of Operation
-
-<figure class="epigraph">
-  <blockquote>Any sufficiently advanced technology is indistinguishable from magic.</blockquote>
-  <figcaption>Arthur C. Clarke</figcaption>
-</figure>
-
-I've always wanted to know how things work. Mechanical things give up their secrets if you look closely enough: follow the parts, see what pushes what, and eventually it makes sense. Electronics never did. I could stare at a circuit board for as long as I liked and it wouldn't explain itself, because the part that makes it work can't be seen. As a kid, that made it feel like magic. How can a stone think?
-
-I wanted to understand all of it, and I wanted to build things of my own. Electrical engineering lets me do both. For me, it's also the hardest to learn alone. Software and CAD show you right away whether something works, so I've picked up a lot of both on my own. Circuits don't: the physics behind them stays invisible, and mistakes cost parts. So that's what I chose to study.
-
 ## Low-Power Modes
 
 | Mode | Description |
