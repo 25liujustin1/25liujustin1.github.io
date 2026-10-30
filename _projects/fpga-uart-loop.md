@@ -1,7 +1,6 @@
 ---
 title: "FPGA–STM32 UART Loop"
 doc: AN-005
-order: 5
 date: 2026-10-01
 period: Oct 2026
 role: Personal project

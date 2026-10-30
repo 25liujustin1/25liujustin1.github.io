@@ -1,10 +1,9 @@
 ---
 layout: page
 title: Projects
-lead: Boards, firmware and hardware I've built, newest first.
 ---
 <div class="cards">
-  {% assign projects = site.projects | sort: "order" %}
+  {% assign projects = site.projects | sort: "date" | reverse %}
   {% for p in projects %}
   <a class="card" href="{{ p.url | relative_url }}">
     <span class="when mono">{{ p.period }}{% if p.context %} · {{ p.context }}{% endif %}</span>

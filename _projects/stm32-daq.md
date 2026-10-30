@@ -1,7 +1,6 @@
 ---
 title: "Bare-Metal STM32 Signal Acquisition System"
 doc: AN-003
-order: 3
 date: 2026-03-01
 period: Mar 2026
 role: Personal project

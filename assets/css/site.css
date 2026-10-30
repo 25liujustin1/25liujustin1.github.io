@@ -106,7 +106,11 @@ main.wrap {
 .when { font-family: var(--mono); font-size: 0.76rem; color: var(--ink); padding-top: 3px; }
 
 /* project cards */
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 26px 24px; }
+/* projects grid: three across on a wider paper, two on tablets, one on phones */
+body:has(.cards) .wrap { max-width: 1180px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 24px; margin-top: 18px; }
+@media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
 .card { display: flex; flex-direction: column; gap: 4px; padding: 18px; color: var(--text); text-decoration: none; }
 .card h3 { margin: 0; font-family: var(--serif); font-weight: 700; font-size: 1.12rem; line-height: 1.35; color: var(--text); }
 .card p { margin: 0 0 6px; color: var(--muted); font-size: 0.93rem; }
@@ -146,6 +150,28 @@ button.btn { font: inherit; font-family: var(--mono); }
 .article-head h1 { font-family: var(--serif); font-weight: 400; color: var(--ink); font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.15; margin: 0; }
 .role { font-family: var(--hand); font-size: 1.3rem; color: var(--ink); margin: 8px 0 0; line-height: 1.2; }
 
+/* project pages with a photo: wider paper, title across the top, then the photo on the left
+   (stays in view while scrolling) and the sections on the right */
+body:has(.article.has-media) .wrap { max-width: 1360px; }
+/* the photo column is as wide as the photo (up to half the page), so tall photos, capped in height, leave more room for text */
+.article.has-media { display: grid; grid-template-columns: fit-content(50%) minmax(0, 1fr); gap: 0 48px; align-items: start; }
+.has-media .article-head, .has-media .back { grid-column: 1 / -1; }
+.has-media .article-head { text-align: center; }
+.has-media .article-head p { margin-left: auto; margin-right: auto; }
+.has-media .article-head .tags { justify-content: center; }
+.article-media { position: sticky; top: 24px; margin: 56px 0 0; }   /* top lines up with the first section heading */
+.article-media figure { margin: 0; }
+.article-media img { display: block; width: auto; max-width: 100%; height: auto; max-height: 560px; border-radius: var(--wobble); border: 2px solid var(--ink); }
+.article-media figcaption { font-family: var(--hand); font-size: 1.15rem; line-height: 1.2; color: var(--ink); margin-top: 6px; }
+/* several photos: side by side, each a bit shorter */
+.article-media.multi { display: flex; gap: 16px; align-items: flex-start; }
+.article-media.multi figure { flex-shrink: 1; flex-basis: 0; min-width: 0; }
+.article-media.multi img { width: 100%; max-height: none; }
+@media (max-width: 900px) {
+  .article.has-media { grid-template-columns: 1fr; }
+  .article-media { position: static; margin-top: 20px; }
+}
+
 /* sections numbered 01, 02 ... in little circles */
 .prose { margin-top: 20px; counter-reset: sec; }
 .prose h2 {
@@ -177,7 +203,8 @@ button.btn { font: inherit; font-family: var(--mono); }
   margin: 18px 0; padding: 2px 16px; border-left: 2px dashed var(--ink);
   font-family: var(--hand); font-size: 1.4rem; line-height: 1.3; color: var(--ink);
 }
-.back { margin-top: 40px; }
+.back { margin: 26px 0 0; }
+.back + .article-head { padding-top: 12px; }
 .back a { font-family: var(--mono); font-size: 0.85rem; }
 
 /* code highlighting (rouge) */
