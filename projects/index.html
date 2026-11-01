@@ -2,6 +2,8 @@
 layout: page
 title: Projects
 ---
+<p class="lead">See my <a href="{{ '/resume/' | relative_url }}">résumé</a> for research and team experience.</p>
+
 <div class="cards">
   {% assign projects = site.projects | sort: "date" | reverse %}
   {% for p in projects %}
